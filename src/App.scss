@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+.App-container {
+  // display: flex;
+  min-height: 100vh;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+}
+
+.question-container {
+  padding: 100px;
+  margin: 100px 75px;
+  border-radius: 7px;
+}
+
+.Question{
+  font-size: 40px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.Complete{
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+}
