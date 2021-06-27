@@ -9,20 +9,28 @@ class App extends Component {
         "Question": "What are the ideal conditions inside an office?",
         Selections: [
           {
-            Answer: "Good Pay",
-            Alt1: "Bad Pay",
+            Options: [
+              {text: "Good Pay", isValid: true},
+              {text: "Bad Pay", isValid: false}
+            ],
           },
           { 
-            Answer: "Less Meetings",
-            Alt1: "Lot of Meetings",
+            Options: [
+              {text: "Less Meetings", isValid: true},
+              {text: "Lot of Meetings", isValid: false}
+            ],
           },
           {
-            Answer: "Free Coffee",
-            Alt1: "Expensive Coffee",
+            Options: [
+              {text: "Free Coffee", isValid: true},
+              {text: "Expensive Coffee", isValid: false}
+            ],
           },
           {
-            Answer: "Dog in Office",
-            Alt1: "Bear in Office",
+            Options: [
+              {text: "Dog in Office", isValid: true},
+              {text: "Bear in Office", isValid: false}
+            ],
           },
         ]
       },
@@ -30,13 +38,17 @@ class App extends Component {
         "Question": "Which are the best sports people & teams?",
         Selections: [
           {
-            Answer: "Liverpool",
-            Alt1: "Chelsea",
-            Alt2: "Man Utd"
+            Options: [
+              {text: "Liverpool", isValid: true},
+              {text: "Chelsea", isValid: false},
+              {text: "Man Utd", isValid: false}
+            ],
           },
           { 
-            Answer: "Serena Williams",
-            Alt1: "Naomi Osaka",
+            Options: [
+              {text: "Serena Williams", isValid: true},
+              {text: "Naomi Osaka", isValid: false}
+            ],
           },
         ]
       },

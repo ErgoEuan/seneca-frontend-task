@@ -14,8 +14,11 @@
 
 .question-container {
   padding: 100px;
-  margin: 100px 75px;
+  margin: 100px 10%;
   border-radius: 7px;
+  background: linear-gradient(180deg, #F6B868 0%, #EE6B2D 100%);
+  transition: background-color 0.5s ease;
+
 }
 
 .Question{
@@ -27,4 +30,48 @@
   font-size: 32px;
   font-weight: 600;
   color: #ffffff;
+}
+
+.selection-container{
+	display: flex;
+	justify-content: center;
+	padding: 0.4rem 0.8rem;
+	width: 100%;
+}
+
+.selection{
+  background-color: transparent;
+	padding: 20px;
+  margin: 10px;
+  display: inline-flex;
+  justify-content: space-around;
+  overflow: hidden;
+  width: 75%;
+	border-radius: 2.4rem;
+  border: 2px solid;
+  border-color: #fff9f5a2;
+  position: relative;
+}
+
+.selection::after{
+  background-color: #fff9f5a2;
+  border-radius: 2.4rem;
+  width: 25%;
+  position: absolute;
+}
+
+.radio-input{ 
+  display: none;
+}
+
+.radio-label{
+  padding: 0px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.radio-label:hover{
+  color: #7a7474;
 }

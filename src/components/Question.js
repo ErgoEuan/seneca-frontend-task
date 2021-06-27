@@ -1,45 +1,61 @@
 import { Component } from "react";
-
-// Selection = () => {
-//     return (
-//         <div></div>
-//     )
-// }
-
-const Selection = ({selections}) => {
-    console.log(selections)
-    return selections.map((selection, i) => (
-        <div>{selection.Answer}</div>
-    ));
-}
+import Selections from './Selections';
 
 export default class Question extends Component {
 
+    constructor() {
+        super();
+        this.state = {
+          color1: '#F6B868',
+          color2: '#EE6B2D',
+          complete: 'incorrect'
+        };
+    }
+
     getStyle = () => {
-        const color1 = '#F6B868';
-        const color2 = '#EE6B2D';
         return {
-            background: 'linear-gradient(180deg, ' + color1 + ' 0%, ' + color2 + ' 100%)',
+            background: 'linear-gradient(180deg, ' + this.state.color1 
+            + ' 0%, ' + this.state.color2 + ' 100%)',
+        }
+    }
+
+    completion = (percent) => {
+        if (percent >= 0.5 && percent < 1){
+            this.setState({
+                color1: '#F1B496',
+                color2: '#EA806A',
+                complete: 'incorrect'
+            });
+        } 
+        else if (percent === 1){
+            this.setState({
+                color1: '#76E0C2',
+                color2: '#59CADA',
+                complete: 'correct!'
+            });
+        }
+        else {
+            this.setState({
+                color1: '#F6B868',
+                color2: '#EE6B2D',
+                complete: 'incorrect'
+            });
         }
     }
 
     render() {
-        // console.log(this.props.question)
-        const { Question } = this.props.question;
-        const Complete = "Correct!";
         return (
             <div style={this.getStyle()} className="question-container">
                 <h1 className="Question">
-                    {Question}
+                    {this.props.question.Question}
                 </h1>
-                <Selection selections={this.props.question.Selections}/>
-                {/* <div onChange={this.onChangeValue}>
-                    <input type="radio" value="Male" name="gender" /> Male
-                    <input type="radio" value="Female" name="gender" /> Female
-                    <input type="radio" value="Other" name="gender" /> Other
-                </div> */}
+                <div>
+                    <Selections questionNumber={this.props.questionNumber} 
+                    selections={this.props.question.Selections}
+                    completion={this.completion}/>
+                </div>
                 <h2 className="Complete">
-                    The answer is {Complete}
+                    The answer is {this.state.complete}
                 </h2>
             </div>
         )
