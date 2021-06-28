@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Selections from './Selections';
+import PropTypes from 'prop-types';
 
 export default class Question extends Component {
 
@@ -45,8 +46,8 @@ export default class Question extends Component {
 
     render() {
         return (
-            <div style={this.getStyle()} className="question-container">
-                <h1 className="Question">
+            <div style={this.getStyle()} className='question-container'>
+                <h1 className='Question'>
                     {this.props.question.Question}
                 </h1>
                 <div>
@@ -54,10 +55,16 @@ export default class Question extends Component {
                     selections={this.props.question.Selections}
                     completion={this.completion}/>
                 </div>
-                <h2 className="Complete">
+                <h2 className='Complete'>
                     The answer is {this.state.complete}
                 </h2>
             </div>
         )
     }
+}
+
+Question.propTypes = {
+    question: PropTypes.object.isRequired,
+    questionNumber: PropTypes.number.isRequired,
+    completion: PropTypes.func,
 }
