@@ -66,5 +66,4 @@ export default class Question extends Component {
 Question.propTypes = {
     question: PropTypes.object.isRequired,
     questionNumber: PropTypes.number.isRequired,
-    completion: PropTypes.func,
 }
