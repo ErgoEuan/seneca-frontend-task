@@ -67,7 +67,7 @@ const Radio = (props) =>  {
             checked={props.isSelected} 
             disabled={props.lock}
         />
-        <label htmlFor={props.id}>
+        <label htmlFor={props.id} style={{ cursor: [props.lock ? "default" : "pointer"] }}>
             {props.label}
         </label>
       </>
