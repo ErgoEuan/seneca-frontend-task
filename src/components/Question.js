@@ -46,16 +46,18 @@ export default class Question extends Component {
 
     render() {
         return (
-            <div style={this.getStyle()} className='question-container'>
-                <h1 className='Question'>
+            <div style={this.getStyle()} className='questionContainer'>
+                <h1 className='questionName'>
                     {this.props.question.Question}
                 </h1>
                 <div>
-                    <Selections questionNumber={this.props.questionNumber} 
-                    selections={this.props.question.Selections}
-                    completion={this.completion}/>
+                    <Selections 
+                        questionNumber={this.props.questionNumber} 
+                        selections={this.props.question.Selections}
+                        completion={this.completion}
+                    />
                 </div>
-                <h2 className='Complete'>
+                <h2 className='completeText'>
                     The answer is {this.state.complete}
                 </h2>
             </div>

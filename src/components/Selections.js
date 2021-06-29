@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Selection from './Selection';
+import RadioGroup from './RadioGroup';
 import PropTypes from 'prop-types';
 
 export default class Selections extends Component {
@@ -26,7 +26,7 @@ export default class Selections extends Component {
     }
 
     onChangeValue = (event) => {
-        const key = (event.target.value);
+        const key = (event.target.value).substring(0, 3);
         const question = key.substring(0, 1);
         const group = key.substring(1, 2);
         const option = key.substring(2, 3);
@@ -55,11 +55,11 @@ export default class Selections extends Component {
 
     render() {  
         return this.props.selections.map((selection, i) => (
-            <div className='selection-container' key={i}>
-                <div className='selection' onChange={this.onChangeValue}>
-                    <Selection groupNumber={'' + this.props.questionNumber + i} 
-                    selection={selection}/>
-                </div>
+            <div className='selectionContainer' onChange={this.onChangeValue} key={i}>
+                <RadioGroup 
+                    groupNumber={'' + this.props.questionNumber + i}
+                    selection={selection}
+                />
             </div>
         ));
     }

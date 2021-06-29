@@ -16,14 +16,14 @@ class App extends Component {
           },
           { 
             Options: [
-              {text: "Less Meetings", isValid: true},
-              {text: "Lot of Meetings", isValid: false}
+              {text: "Lot of Meetings", isValid: false},
+              {text: "Less Meetings", isValid: true}
             ],
           },
           {
             Options: [
-              {text: "Free Coffee", isValid: true},
-              {text: "Expensive Coffee", isValid: false}
+              {text: "Expensive Coffee", isValid: false},
+              {text: "Free Coffee", isValid: true}
             ],
           },
           {
@@ -35,19 +35,18 @@ class App extends Component {
         ]
       },
       {
-        "Question": "Which are the best sports people & teams?",
+        "Question": "What is better?",
         Selections: [
           {
             Options: [
-              {text: "Liverpool", isValid: true},
-              {text: "Chelsea", isValid: false},
-              {text: "Man Utd", isValid: false}
+              {text: "Dogs", isValid: true},
+              {text: "Cats", isValid: false},
             ],
           },
           { 
             Options: [
-              {text: "Serena Williams", isValid: true},
-              {text: "Naomi Osaka", isValid: false}
+              {text: "Pizza", isValid: false},
+              {text: "Sushi", isValid: true}
             ],
           },
         ]
