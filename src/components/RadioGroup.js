@@ -17,11 +17,12 @@ export default class RadioGroup extends Component {
     render() {
         return (
             <>
-                <Group 
+                <Group
                     groupNumber={this.props.groupNumber}
                     selectedOption={this.state.selectedOption}
                     handleInputChange={this.handleInputChange} 
                     options={this.props.selection.Options}
+                    lock={this.props.lock}
                 />
             </>
         );
@@ -39,6 +40,7 @@ const Group = (props) => {
                 label={props.options[0].text}
                 isSelected={props.selectedOption === "left"}
                 handleInputChange={props.handleInputChange}
+                lock={props.lock}
             />
             <Radio
                 id={`${props.groupNumber}SecondRadio`}
@@ -47,6 +49,7 @@ const Group = (props) => {
                 label={props.options[1].text}
                 isSelected={props.selectedOption === "right"}
                 handleInputChange={props.handleInputChange} 
+                lock={props.lock}
             />
         </div>
     )
@@ -62,6 +65,7 @@ const Radio = (props) =>  {
             value={props.value}  
             onChange={() => props.handleInputChange(props.value)}
             checked={props.isSelected} 
+            disabled={props.lock}
         />
         <label htmlFor={props.id}>
             {props.label}
@@ -73,4 +77,5 @@ const Radio = (props) =>  {
 RadioGroup.propTypes = {
     groupNumber: PropTypes.string.isRequired,
     selection: PropTypes.object.isRequired,
+    lock: PropTypes.bool.isRequired,
 }

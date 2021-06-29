@@ -7,6 +7,7 @@ export default class Selections extends Component {
     constructor() {
         super();
         this.state = {
+            lock: false,
           };
     }
 
@@ -49,8 +50,11 @@ export default class Selections extends Component {
         }
         let percent = counter/amountOptions;
         this.props.completion(percent);
-
-        //add a lock to the radio buttons here if percent = 1
+        if (percent === 1) {
+            this.setState({
+                lock: true,
+            });
+        }
     }
 
     render() {  
@@ -59,6 +63,7 @@ export default class Selections extends Component {
                 <RadioGroup 
                     groupNumber={'' + this.props.questionNumber + i}
                     selection={selection}
+                    lock={this.state.lock}
                 />
             </div>
         ));
