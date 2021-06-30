@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// Component for a radio group toggle
 export default class RadioGroup extends Component {
 
     constructor() {
         super();
+        // Default state of the component
         this.state = {
             selectedOption: null,
           };
     }
 
     componentDidMount() {
-        this.sidePreSelector()
+        // Function required on componentDidMount
+        this.togglePreSelector()
     }
 
-    sidePreSelector = () => {
+    // Function for random toggle selection 
+    togglePreSelector = () => {
         const selection = Math.floor(Math.random() * 2)
         const key = this.props.groupNumber + selection
+
+        // Updates the state to the selected toggle position
         if (selection === 0) {
             this.setState({
                 selectedOption: 'left',
@@ -27,9 +33,13 @@ export default class RadioGroup extends Component {
                 selectedOption: 'right',
             });
         }
+
+        // Prop function call to update the state in the parent component in
+        // correspondence with the random toggle selection 
         this.props.updateSelection(key)
     }
 
+    // Updates the toggle position
     handleInputChange = (value) => {
         const state = (value).substring(3, 8)
         this.setState({
@@ -52,6 +62,7 @@ export default class RadioGroup extends Component {
     }
 }
 
+// Radio group for the two options in the toggle
 const Group = (props) => {
     return (
         <div className='radioGroup'>

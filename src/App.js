@@ -57,9 +57,7 @@ class App extends Component {
   render(){
     return (
       <div className='App'>
-        <header className='App-container'>
-          <Questions questions={this.state.questions}/>
-        </header>
+        <Questions questions={this.state.questions}/>
       </div>
     );
   }

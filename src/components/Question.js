@@ -2,10 +2,12 @@ import { Component } from 'react';
 import Selections from './Selections';
 import PropTypes from 'prop-types';
 
+// Component for a question
 export default class Question extends Component {
 
     constructor() {
         super();
+        // Default state of the component
         this.state = {
           color1: '#F6B868',
           color2: '#EE6B2D',
@@ -13,6 +15,7 @@ export default class Question extends Component {
         };
     }
 
+    // Updating the background gradient 
     getStyle = () => {
         return {
             background: 'linear-gradient(180deg, ' + this.state.color1 
@@ -20,6 +23,7 @@ export default class Question extends Component {
         }
     }
 
+    // Determining the completion level of the question and updating accordingly  
     completion = (percent) => {
         if (percent >= 0.5 && percent < 1){
             this.setState({

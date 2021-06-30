@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import RadioGroup from './RadioGroup';
 import PropTypes from 'prop-types';
 
+// Component for all the selections in a question
 export default class Selections extends Component {
 
     constructor() {
         super();
+        // Default state of the component
         this.state = {
             lock: false,
           };
     }
 
+    // Prop called function to update the state in correspondence with the 
+    // random toggle selection within the child component
     updateSelection = (key) => {
         const question = key.substring(0, 1);
         const group = key.substring(1, 2);
@@ -22,6 +26,7 @@ export default class Selections extends Component {
         }, () => {this.checkCompletion()});
     }
 
+    // Function to update the state in result to an onChange of a toggle
     onChangeValue = (event) => {
         const key = (event.target.value).substring(0, 3);
         const question = key.substring(0, 1);
@@ -34,6 +39,8 @@ export default class Selections extends Component {
         }, () => {this.checkCompletion()});
     }
 
+    // Function to determine the completion of a question
+    // Passing props to update gradient and lock selections accordingly
     checkCompletion = () => {
         const amountOptions = (this.props.selections).length;
         const question = this.props.questionNumber;
