@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import RadioGroup from './RadioGroup';
 import PropTypes from 'prop-types';
 
@@ -11,19 +11,15 @@ export default class Selections extends Component {
           };
     }
 
-    componentDidMount() {
-        this.buildState(this.props)
-    }
-
-    buildState() {
-        const questionNumber = this.props.questionNumber;
-        const amountOptions = (this.props.selections).length;
-        for ( let i = 0; i < amountOptions; i++) {
-            const selectionKey = 'sKey' + questionNumber + i;
-            this.setState({
-                [selectionKey]: null,
-            });
-        }
+    updateSelection = (key) => {
+        const question = key.substring(0, 1);
+        const group = key.substring(1, 2);
+        const option = key.substring(2, 3);
+        const selectionKey = 'sKey' + question + group;
+        const value = this.props.selections[group].Options[option].isValid
+        this.setState({
+            [selectionKey]: value,
+        }, () => {this.checkCompletion()});
     }
 
     onChangeValue = (event) => {
@@ -64,6 +60,7 @@ export default class Selections extends Component {
                     groupNumber={'' + this.props.questionNumber + i}
                     selection={selection}
                     lock={this.state.lock}
+                    updateSelection={this.updateSelection}
                 />
             </div>
         ));

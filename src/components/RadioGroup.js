@@ -1,10 +1,33 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class RadioGroup extends Component {
 
-    state = { 
-        selectedOption: false,
+    constructor() {
+        super();
+        this.state = {
+            selectedOption: null,
+          };
+    }
+
+    componentDidMount() {
+        this.sidePreSelector()
+    }
+
+    sidePreSelector = () => {
+        const selection = Math.floor(Math.random() * 2)
+        const key = this.props.groupNumber + selection
+        if (selection === 0) {
+            this.setState({
+                selectedOption: 'left',
+            });
+        }
+        else {
+            this.setState({
+                selectedOption: 'right',
+            });
+        }
+        this.props.updateSelection(key)
     }
 
     handleInputChange = (value) => {
@@ -31,23 +54,23 @@ export default class RadioGroup extends Component {
 
 const Group = (props) => {
     return (
-        <div className="radioGroup">
+        <div className='radioGroup'>
             <div className={`selectedSlider ${props.selectedOption}`}></div>
             <Radio
                 id={`${props.groupNumber}firstRadio`}
                 group={props.groupNumber}
-                value={props.groupNumber + "0left"}
+                value={props.groupNumber + '0left'}
                 label={props.options[0].text}
-                isSelected={props.selectedOption === "left"}
+                isSelected={props.selectedOption === 'left'}
                 handleInputChange={props.handleInputChange}
                 lock={props.lock}
             />
             <Radio
                 id={`${props.groupNumber}SecondRadio`}
                 group={props.groupNumber}
-                value={props.groupNumber + "1right"}
+                value={props.groupNumber + '1right'}
                 label={props.options[1].text}
-                isSelected={props.selectedOption === "right"}
+                isSelected={props.selectedOption === 'right'}
                 handleInputChange={props.handleInputChange} 
                 lock={props.lock}
             />
@@ -59,7 +82,7 @@ const Radio = (props) =>  {
     return(
       <>
         <input 
-            type="radio" 
+            type='radio' 
             id={props.id} 
             name={props.group}
             value={props.value}  
@@ -67,7 +90,7 @@ const Radio = (props) =>  {
             checked={props.isSelected} 
             disabled={props.lock}
         />
-        <label htmlFor={props.id} style={{ cursor: [props.lock ? "default" : "pointer"] }}>
+        <label htmlFor={props.id} style={{ cursor: [props.lock ? 'default' : 'pointer']}}>
             {props.label}
         </label>
       </>
@@ -78,4 +101,5 @@ RadioGroup.propTypes = {
     groupNumber: PropTypes.string.isRequired,
     selection: PropTypes.object.isRequired,
     lock: PropTypes.bool.isRequired,
+    updateSelection: PropTypes.func.isRequired,
 }
